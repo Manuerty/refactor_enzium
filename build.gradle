@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.lasencinas'
+version = '1.0-SANPSHOT'
+description = 'Enzinium'
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+
+}
+
+
+
+jar {
+    manifest {
+        attributes 'Main-Class' : 'Enzinium.App'
+    }
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_20
+    targetCompatibility = JavaVersion.VERSION_20
+}
