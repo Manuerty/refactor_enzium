@@ -76,13 +76,6 @@ public class App {
          * el metodo toString():
          *
          * name()
-         * @return devuelve el nombre del token de forma human-readable (p.e., “US Dollars”).
-         *
-         * symbol()
-         * @return el nombre del símbolo del token de forma human-readable (p.e., “USD”).
-         *
-         * totalSupply()
-         * @return el total de unidades de este token que actualmente existen.
          */
 
         TokenContract ricknillos = new TokenContract(rick);

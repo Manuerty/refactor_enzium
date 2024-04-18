@@ -110,8 +110,15 @@ public class TokenContract {
             this.getBalances().compute(ownerPK, (pk, tokens) -> tokens - units);
             this.getBalances().put(recipient, balanceOf(recipient) + units);
         } catch (IllegalArgumentException e) {
-            String error = e.getMessage();
-            System.out.println("There is no enough stock of tickets to resolve the transaction, and it failed because" + error + "the stock was:" + balanceOf(ownerPK) + REASONBECOUSE + units);
+            String msg_error = e.getMessage();
+            StringBuilder error = new StringBuilder()
+                    .append("There is no enough stock of tickets to resolve the transaction, and it failed because ")
+                    .append(msg_error)
+                    .append(" the stock was: ")
+                    .append(balanceOf(ownerPK))
+                    .append(REASONBECOUSE)
+                    .append(units);
+            System.out.println(error.toString());
         }
     }
 
@@ -121,9 +128,15 @@ public class TokenContract {
             this.getBalances().put(sender, balanceOf(sender) - units);
             this.getBalances().put(recipient, balanceOf(recipient) + units);
         } catch (IllegalArgumentException e) {
-
-            String error = e.getMessage();
-            System.out.println("There is no enough stock of tickets to resolve the transaction, and it failed because" + error + "the stock was:" + balanceOf(sender) + REASONBECOUSE + units);
+            String mesg_error = e.getMessage();
+            StringBuilder error = new StringBuilder()
+                    .append("There is no enough stock of tickets to resolve the transaction, and it failed because\"")
+                    .append(mesg_error)
+                    .append(" the stock was ")
+                    .append(balanceOf(sender))
+                    .append(REASONBECOUSE)
+                    .append(units);
+            System.out.println(error.toString());
         }
     }
 
@@ -134,8 +147,15 @@ public class TokenContract {
             transfer(recipient, units);
             this.owner.transferEZI(enziniums);
         } catch (IllegalArgumentException e) {
-            String error = e.getMessage();
-            System.out.println("You have not enough enziniums to buy the tickets, and it failed because" + error + "your net worth was:"+ this.owner.getBalance() + REASONBECOUSE + this.getTokenPrice());
+            String msg_error = e.getMessage();
+            StringBuilder error = new StringBuilder()
+                    .append("You have not enough enziniums to buy the tickets, and it failed because ")
+                    .append(msg_error)
+                    .append(" your net worth was: ")
+                    .append(this.owner.getBalance())
+                    .append(REASONBECOUSE)
+                    .append(this.getTokenPrice());
+            System.out.println(error.toString());
         }
     }
     private void require(Boolean holds) throws IllegalArgumentException {
